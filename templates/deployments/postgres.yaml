@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: phonebook
+  labels:
+    tier: backend
+    role: db
+  name: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: backend
+      role: db
+  template:
+    metadata:
+      labels:
+        tier: backend
+        role: db
+    spec:
+      containers:
+        - image: postgres:12
+          name: postgres
+          env:
+            - name: PGDATA
+              value: /var/lib/postgresql/data/db-files
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: backend
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: backend
+                  key: POSTGRES_PASSWORD
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: backend
+                  key: POSTGRES_DB
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: phonebook-postgres-data-pvc
+      volumes:
+        - name: phonebook-postgres-data-pvc
+          persistentVolumeClaim:
+            claimName: phonebook-postgres-data
+      

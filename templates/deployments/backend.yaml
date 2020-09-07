@@ -1,0 +1,20 @@
+{{ with .Values.django }}
+  {{ include "backend-base" . }}
+{{ end }}
+
+---
+
+{{ with .Values.celery }}
+  {{ include "backend-base" . }}
+{{ end }}
+
+---
+{{ with .Values.flower }}
+  {{ include "backend-base" . }}
+{{ end }}
+
+---
+
+{{ with .Values.beat }}
+  {{ include "backend-base" . }}
+{{ end }}

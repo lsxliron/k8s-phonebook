@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq
+  labels:
+    tier: baclend
+    role: broker
+  namespace: phonebook
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: backend
+      role: broker
+  template:
+    metadata:
+      labels:
+        tier: backend
+        role: broker
+    spec:
+      containers:
+        - image: rabbitmq:3.8.8-management
+          name: rabbitmq-broker
