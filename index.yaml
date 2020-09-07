@@ -3,7 +3,17 @@ entries:
   phonebook:
   - apiVersion: v2
     appVersion: 2.0.0
-    created: "2020-09-07T15:47:59.038827-04:00"
+    created: "2020-09-07T15:48:57.014194-04:00"
+    description: Django and Celery testing with Kubernetes
+    digest: 233a5af5c5ebcbf957899b83b8fabbe7022c0983ea1549e31026028921d66201
+    name: phonebook
+    type: application
+    urls:
+    - https://lsxliron.github.io/k8s-phonebook/phonebook-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
+    appVersion: 2.0.0
+    created: "2020-09-07T15:48:57.013624-04:00"
     description: Django and Celery testing with Kubernetes
     digest: 4c5250e2f0f941ad76a1fea26f5b77002d00c9f7e66ed0ecaf9f1bfc261e9f39
     name: phonebook
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://lsxliron.github.io/k8s-phonebook/phonebook-1.0.0.tgz
     version: 1.0.0
-generated: "2020-09-07T15:47:59.038141-04:00"
+generated: "2020-09-07T15:48:57.012957-04:00"
