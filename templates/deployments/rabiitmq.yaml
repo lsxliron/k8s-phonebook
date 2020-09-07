@@ -21,3 +21,15 @@ spec:
       containers:
         - image: rabbitmq:3.8.8-management
           name: rabbitmq-broker
+          env:
+            - name: RABBITMQ_DEFAULT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: backend
+                  key: RABBIT_USER
+            - name: RABBITMQ_DEFAULT_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: backend
+                  key: RABBIT_PASSWORD
+
